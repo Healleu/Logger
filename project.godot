@@ -8,8 +8,25 @@
 
 config_version=5
 
+[Plugin]
+
+Logger/timestamp=true
+Logger/info_color=Color(1, 1, 1, 1)
+Logger/warning_color=Color(1, 1, 0, 1)
+Logger/error_color=Color(1, 0, 0, 1)
+Logger/log_level=0
+
 [application]
 
 config/name="Logger"
+config/tags=PackedStringArray("plugin")
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Logger="*res://addons/Logger/logger.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Logger/plugin.cfg")

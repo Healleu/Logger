@@ -13,11 +13,12 @@ var file : FileAccess = null
 var level : LOG_LEVEL = LOG_LEVEL.INFO
 
 func _enter_tree() -> void :
-	var datetime = _get_string_date_time_no_special() 
-	file = FileAccess.open("user://MyTinyVillage_" + datetime + ".txt", FileAccess.WRITE_READ)
+	var datetime = _get_string_date_time_no_special()
+	var project_name = ProjectSettings.get_setting("application/config/name")
+	file = FileAccess.open("user://" + project_name + "_" + datetime + ".txt", FileAccess.WRITE_READ)
 	if file :
 		var version : Variant = ProjectSettings.get_setting("application/config/version")
-		file.store_string("MyTinyVillage\n")
+		file.store_string(project_name + "\n")
 		file.store_string("Version : " + str(version) + "\n")
 		file.store_string("Logging Level : " + str(level) + "\n")
 		file.store_string("\n")
